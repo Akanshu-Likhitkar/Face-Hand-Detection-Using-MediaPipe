@@ -24,6 +24,8 @@ bbb = hand.Hands(
 
 while True:
     ret, frame = cap.read()
+    # Apne screen ka resolution daalein, jaise 1280x720 ya 1920x1080
+    frame = cv2.resize(frame, (1380, 720))
 
     if not ret:
         break
@@ -62,18 +64,18 @@ while True:
                 hand.HAND_CONNECTIONS,
                 Draw.DrawingSpec(
                     color=(255, 80, 0),
-                    thickness=3,
+                    thickness=5,
                     circle_radius=2
                 ),
                 Draw.DrawingSpec(
                     color=(255, 255, 0),
-                    thickness=2,
+                    thickness=5,
                     circle_radius=5
                 )
             )
 
     # Display Webcam
-    cv2.imshow("Neon Face Mesh + Hand Tracking", frame)
+    cv2.imshow("Face Mesh + Hand Tracking", frame)
 
     # Press Q to Exit
     if cv2.waitKey(1) & 0xFF == ord('q'):
